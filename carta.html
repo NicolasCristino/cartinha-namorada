@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minha Cartinha para Você 💌</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fdeff2;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            color: #e63946;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .letter-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .letter-image:hover {
+            transform: scale(1.05);
+        }
+        .btn-custom {
+            background-color: #e63946;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #d62839;
+        }
+        /* Estilo do Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="title">Minha Cartinha para Você 💌</h2>
+        <p>Escrevi essa cartinha à mão para expressar todo o meu amor e carinho por você. ❤️</p>
+        <img src="img/carta.jpg" alt="Cartinha escrita à mão" class="letter-image" id="openModal">
+
+        <!-- Botão para abrir o modal da caneta/tinteiro -->
+        <button class="btn-custom" id="openSecondModal">
+            Observe o que foi usado para escrever lindas palavras com belas grafias ✍️
+        </button>
+    </div>
+
+    <!-- Modal da carta -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img src="img/carta.jpg" class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Modal da caneta/tinteiro -->
+    <div id="penModal" class="modal">
+        <span class="close">&times;</span>
+        <img src="img/caneta.jpg" class="modal-content" id="modalPenImage">
+    </div>
+
+    <script>
+        // Seleciona os elementos do primeiro modal (carta)
+        var modal = document.getElementById("imageModal");
+        var img = document.getElementById("openModal");
+        var modalImg = document.getElementById("modalImage");
+        var close = document.querySelectorAll(".close");
+
+        // Seleciona os elementos do segundo modal (caneta/tinteiro)
+        var penModal = document.getElementById("penModal");
+        var openPenModal = document.getElementById("openSecondModal");
+        var modalPenImg = document.getElementById("modalPenImage");
+
+        // Abre o modal da carta ao clicar na imagem
+        img.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // Abre o modal da caneta/tinteiro ao clicar no botão
+        openPenModal.onclick = function() {
+            penModal.style.display = "flex";
+        }
+
+        // Fecha ambos os modais ao clicar no "X"
+        close.forEach(function(btn) {
+            btn.onclick = function() {
+                modal.style.display = "none";
+                penModal.style.display = "none";
+            }
+        });
+
+        // Fecha o modal ao clicar fora da imagem
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+            if (event.target === penModal) {
+                penModal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
